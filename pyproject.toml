@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "entra-scopes-finder"
+version = "1.0.0"
+description = "A CLI tool for finding Azure first party clients with pre-consented scopes"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+maintainers = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["azure", "entra", "security", "scopes", "oauth", "red-team"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.6"
+dependencies = [
+    "requests>=2.20.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/kidtronnix/azure-clients"
+Repository = "https://github.com/kidtronnix/azure-clients"
+Issues = "https://github.com/kidtronnix/azure-clients/issues"
+Documentation = "https://github.com/kidtronnix/azure-clients#readme"
+
+[project.scripts]
+entra-scopes-finder = "entra_scopes_finder.cli:main"
+esf = "entra_scopes_finder.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["entra_scopes_finder*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+entra_scopes_finder = ["*.txt", "*.md"]
