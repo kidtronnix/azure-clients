@@ -574,6 +574,12 @@ def main():
         default=24,
         help="Cache age in hours (default: 24). Set to 0 to disable caching"
     )
+    parser.add_argument(
+        "--results",
+        type=int,
+        default=None,
+        help="Limit the number of results displayed (default: show all results)"
+    )
     
     args = parser.parse_args()
     
@@ -668,7 +674,13 @@ def main():
                 print("No apps found.")
                 return 0
             
-            print(f"Found {len(apps)} app(s):")
+            # Apply results limit if specified
+            total_found = len(apps)
+            if args.results is not None and args.results < total_found:
+                apps = apps[:args.results]
+                print(f"Found {total_found} app(s) (showing first {args.results}):")
+            else:
+                print(f"Found {len(apps)} app(s):")
             print("=" * 50)
             
             for app in apps:
@@ -717,7 +729,13 @@ def main():
                 print(f"No matching {search_desc} found.")
                 return 0
             
-            print(f"Found {len(matching_apps)} matching {search_desc}:")
+            # Apply results limit if specified
+            total_found = len(matching_apps)
+            if args.results is not None and args.results < total_found:
+                matching_apps = matching_apps[:args.results]
+                print(f"Found {total_found} matching {search_desc} (showing first {args.results}):")
+            else:
+                print(f"Found {len(matching_apps)} matching {search_desc}:")
             print("=" * 50)
             
             for app in matching_apps:

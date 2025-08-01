@@ -134,11 +134,12 @@ esf --lookup-name "Power" https://graph.microsoft.com
   - `lowest_permissions`: Fewest API permissions first
   - `highest_resources`: Most resources first
   - `lowest_resources`: Fewest resources first
-  - `highest_matching`: Most matching permissions first
-  - `lowest_matching`: Fewest matching permissions first
 
 ### Caching Control
 - `--cache HOURS`: Cache age in hours (default: 24, set to 0 to disable)
+
+### Result Limiting
+- `--results NUMBER`: Limit the number of results displayed (default: show all results)
 
 ### Name Matching
 - `--exact-name`: Require exact name match when using `--lookup-name`
@@ -189,6 +190,12 @@ esf --lookup-name "Office" https://graph.microsoft.com --other-resources
 ```bash
 # Disable caching for fresh data
 esf https://graph.microsoft.com User.Read --cache 0
+
+# Limit results to first 5 apps found
+esf --lookup-name "Microsoft" --results 5
+
+# Show only the top 3 public client apps with least permissions
+esf https://graph.microsoft.com User.Read --public --sort-by lowest_permissions --results 3
 ```
 
 ## Output Format
