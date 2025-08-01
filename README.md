@@ -1,6 +1,13 @@
 # Azure Enterprise Apps Scope Analyzer
 
-A powerful Python script for analyzing Microsoft Azure Enterprise applications and their API permissions (scopes) using data from [entrascopes.com](https://entrascopes.com/firstpartyscopes.json).
+Useful red team tool for finding Azure first party clients with pre-consented scopes to the resources you require. Can specify to search for public clients and foci clients, plus many other useful features.
+
+Data from: [entrascopes.com](https://entrascopes.com/firstpartyscopes.json).
+
+```bash
+# look for a public app with two seperate scopes
+python find_clients.py https://graph.microsoft.com "Policy.Read.All" https://management.azure.com "user_impersonation" --public  
+```
 
 ## Features
 
