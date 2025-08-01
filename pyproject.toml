@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "entra-scopes-finder"
-version = "1.0.0"
+version = "1.0.1"
 description = "A CLI tool for finding Azure first party clients with pre-consented scopes"
 readme = "README.md"
 license = {file = "LICENSE"}
