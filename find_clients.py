@@ -76,7 +76,7 @@ def load_json_from_url(url: str, use_cache: bool = True, cache_max_age_hours: in
     # Try to load from cache first
     if use_cache and is_cache_valid(cache_file, cache_max_age_hours):
         try:
-            print(f"Loading from cache: {cache_file}")
+            # print(f"Loading from cache: {cache_file}")
             with open(cache_file, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except (json.JSONDecodeError, IOError) as e:
@@ -95,7 +95,7 @@ def load_json_from_url(url: str, use_cache: bool = True, cache_max_age_hours: in
             try:
                 with open(cache_file, 'w', encoding='utf-8') as f:
                     json.dump(data, f, indent=2)
-                print(f"Saved to cache: {cache_file}")
+                # print(f"Saved to cache: {cache_file}")
             except IOError as e:
                 print(f"Warning: Could not save to cache: {e}")
         
@@ -580,7 +580,6 @@ def main():
     url = "https://entrascopes.com/firstpartyscopes.json"
     
     try:
-        print(f"Loading JSON from: {url}")
         data = load_json_from_url(url, use_cache=args.cache > 0, cache_max_age_hours=args.cache)
         
         # Create resource mappings
